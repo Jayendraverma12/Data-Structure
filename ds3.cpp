@@ -60,6 +60,44 @@ void insert()
     else
         cout << "\ninvalid index\n";
 }
+void del()
+{
+    int index, x;
+    cout << "enter any index to be deleted an element" << endl;
+    cin >> index;
+    if (index <= total - 1)
+    {
+        x = a[index];
+        for (int i = index + 1; i <= total - 1; i++)
+        {
+            a[i - 1] = a[i];
+        }
+        cout << "deleted element is" << x << endl;
+        total--;
+    }
+    else
+        cout << "invalid index" << endl;
+}
+void search()
+{
+    int x, flag = 0;
+    cout << "enter any element to be searched" << endl;
+    cin >> x;
+    for (int i = 0; i < total; i++)
+    {
+        if (x == a[i])
+        {
+            flag = 1;
+            break;
+        }
+    }
+    if (flag == 0)
+    {
+        cout << "element not found" << endl;
+    }
+    else
+        cout << "element found" << endl;
+}
 int main()
 {
     int ch;
@@ -69,7 +107,9 @@ int main()
         cout << "1 for display" << endl;
         cout << "2 for append " << endl;
         cout << "3 for insert" << endl;
-        cout << "4 for exist" << endl;
+        cout << "4 for deletion" << endl;
+        cout << "5 for search" << endl;
+        cout << "6 for exist" << endl;
         cout << "enter your choice" << endl;
         cin >> ch;
         switch (ch)
@@ -84,10 +124,16 @@ int main()
             insert();
             break;
         case 4:
+            del();
+            break;
+        case 5:
+            search();
+            break;
+        case 6:
             break;
         default:
             cout << "\n\ninvalid choice" << endl;
         }
-    } while (ch != 4);
+    } while (ch != 6);
     return 0;
 }
