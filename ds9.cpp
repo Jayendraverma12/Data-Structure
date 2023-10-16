@@ -1,3 +1,4 @@
+        // Output Restricted Double Ended queue
 #include <iostream>
 #define SIZE 5
 int dqueue[SIZE], front, rear;
