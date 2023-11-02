@@ -65,7 +65,124 @@ int count(NODE *temp)
         c++;
     return c;
 }
-
+NODE *insert_end(NODE *start)
+{
+    NODE *newnode, *temp;
+    int x;
+    newnode = new NODE;
+    cout << "enter any element";
+    cin >> x;
+    newnode->info = x;
+    newnode->next = NULL;
+    if (start == NULL)
+        start = newnode;
+    else
+    {
+        temp = start;
+        while (temp->next = NULL)
+            temp = temp->next;
+        temp->next = newnode->next;
+    }
+    cout << "element inserted";
+    return start;
+}
+NODE *insert_sp(NODE *start)
+{
+    NODE *newnode, *temp;
+    int x, c, pos;
+    cout << "enter any position";
+    cin >> pos;
+    c = count(start);
+    if (pos < 1 || pos > c + 1)
+    {
+        cout << "invalid position";
+        return start;
+    }
+    newnode = new NODE;
+    cout << "enter any element";
+    cin >> x;
+    newnode->info = x;
+    if (pos == 1)
+    {
+        newnode->next = start;
+        start = newnode;
+    }
+    else
+    {
+        temp = start;
+        for (int i = 1; i < pos - 1; i++)
+            temp = temp->next;
+        newnode->next = newnode->next;
+        temp->next = newnode;
+    }
+    cout << "element inserted";
+    return start;
+}
+NODE *del_bg(NODE *start)
+{
+    NODE *temp;
+    if (start == NULL)
+    {
+        cout << "SLL is empty";
+        return start;
+    }
+    temp = start;
+    start = start->next;
+    cout << "deleted element is : " << temp->info;
+    delete temp;
+    return start;
+}
+NODE *del_end(NODE *start)
+{
+    NODE *temp, *current;
+    if (start == NULL)
+    {
+        cout << "SLL is empty";
+        return start;
+    }
+    temp = start;
+    if (start->next == NULL)
+        start = start->next;
+    else
+    {
+        while (temp->next != NULL)
+        {
+            current = temp;
+            temp = temp->next;
+        }
+        current->next = temp->next;
+    }
+    cout << "deleted element is " << temp->info;
+    delete temp;
+    return start;
+}
+NODE *del_sp(NODE *start)
+{
+    NODE *temp, *current;
+    int c, pos;
+    cout << "enter any position";
+    cin >> pos;
+    c = count(start);
+    if (pos < 1 || pos > c)
+    {
+        cout << "invalid position";
+        return start;
+    }
+    temp = start;
+    if (pos == 1)
+        start = start->next;
+    else
+    {
+        for (int i = 1; i < pos; i++)
+        {
+            current = temp;
+            temp = temp->next;
+        }
+        current->next = temp->next;
+    }
+    cout << "deleted element is " << temp->info;
+    return start;
+}
 int main()
 {
     NODE *start = NULL;
